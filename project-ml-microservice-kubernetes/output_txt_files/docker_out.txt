@@ -1,1 +1,119 @@
-<paste log output from Docker prediction, here>
+(.devops) ec2-user:~/environment/DevOps_Microservices/project-ml-microservice-kubernetes (master) $ ./run_docker.sh
+Sending build context to Docker daemon  6.565MB
+Step 1/6 : FROM python:3.7.3-stretch
+3.7.3-stretch: Pulling from library/python
+6f2f362378c5: Already exists 
+494c27a8a6b8: Already exists 
+7596bb83081b: Already exists 
+372744b62d49: Already exists 
+615db220d76c: Already exists 
+39aa0c89bda1: Already exists 
+ac275157d894: Already exists 
+98d16dec829a: Already exists 
+c8514b1c6524: Already exists 
+Digest: sha256:205cafadbb7f0c48f2a6d655eb100a9675aa85e6e73958860f488406cce09779
+Status: Downloaded newer image for python:3.7.3-stretch
+ ---> 34a518642c76
+Step 2/6 : WORKDIR /app
+ ---> Running in ab4066249371
+Removing intermediate container ab4066249371
+ ---> 9b529cbbd9c0
+Step 3/6 : COPY . app.py /app/
+ ---> ca821bb1ac17
+Step 4/6 : RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
+ ---> Running in cf6b7a4fdeb2
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/47/ca/f0d790b6e18b3a6f3bd5e80c2ee4edbb5807286c21cdd0862ca933f751dd/pip-21.1.3-py3-none-any.whl (1.5MB)
+Installing collected packages: pip
+  Found existing installation: pip 19.1.1
+    Uninstalling pip-19.1.1:
+      Successfully uninstalled pip-19.1.1
+Successfully installed pip-21.1.3
+Collecting Click==7.0
+  Downloading Click-7.0-py2.py3-none-any.whl (81 kB)
+Collecting Flask==1.0.2
+  Downloading Flask-1.0.2-py2.py3-none-any.whl (91 kB)
+Collecting itsdangerous==1.1.0
+  Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)
+Collecting Jinja2==2.10.3
+  Downloading Jinja2-2.10.3-py2.py3-none-any.whl (125 kB)
+Collecting MarkupSafe==1.1.1
+  Downloading MarkupSafe-1.1.1-cp37-cp37m-manylinux2010_x86_64.whl (33 kB)
+Collecting numpy==1.17.2
+  Downloading numpy-1.17.2-cp37-cp37m-manylinux1_x86_64.whl (20.3 MB)
+Collecting pandas==0.24.2
+  Downloading pandas-0.24.2-cp37-cp37m-manylinux1_x86_64.whl (10.1 MB)
+Collecting python-dateutil==2.8.0
+  Downloading python_dateutil-2.8.0-py2.py3-none-any.whl (226 kB)
+Collecting pytz==2019.3
+  Downloading pytz-2019.3-py2.py3-none-any.whl (509 kB)
+Collecting scikit-learn==0.20.3
+  Downloading scikit_learn-0.20.3-cp37-cp37m-manylinux1_x86_64.whl (5.4 MB)
+Collecting scipy==1.3.1
+  Downloading scipy-1.3.1-cp37-cp37m-manylinux1_x86_64.whl (25.2 MB)
+Collecting six==1.12.0
+  Downloading six-1.12.0-py2.py3-none-any.whl (10 kB)
+Collecting Werkzeug==0.16.0
+  Downloading Werkzeug-0.16.0-py2.py3-none-any.whl (327 kB)
+Collecting pylint
+  Downloading pylint-2.9.3-py3-none-any.whl (372 kB)
+Collecting isort<6,>=4.2.5
+  Downloading isort-5.9.1-py3-none-any.whl (105 kB)
+Collecting toml>=0.7.1
+  Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+Collecting mccabe<0.7,>=0.6
+  Downloading mccabe-0.6.1-py2.py3-none-any.whl (8.6 kB)
+Collecting astroid<2.7,>=2.6.2
+  Downloading astroid-2.6.2-py3-none-any.whl (228 kB)
+Collecting lazy-object-proxy>=1.4.0
+  Downloading lazy_object_proxy-1.6.0-cp37-cp37m-manylinux1_x86_64.whl (55 kB)
+Collecting typed-ast<1.5,>=1.4.0
+  Downloading typed_ast-1.4.3-cp37-cp37m-manylinux1_x86_64.whl (743 kB)
+Collecting wrapt<1.13,>=1.11
+  Downloading wrapt-1.12.1.tar.gz (27 kB)
+Collecting typing-extensions>=3.7.4
+  Downloading typing_extensions-3.10.0.0-py3-none-any.whl (26 kB)
+Building wheels for collected packages: wrapt
+  Building wheel for wrapt (setup.py): started
+  Building wheel for wrapt (setup.py): finished with status 'done'
+  Created wheel for wrapt: filename=wrapt-1.12.1-cp37-cp37m-linux_x86_64.whl size=71599 sha256=96f6021e067c78659a696e9f9b6d7a7eb98a9448f552ee242d8f9c88b5bc5e73
+  Stored in directory: /tmp/pip-ephem-wheel-cache-pnx5k7f5/wheels/62/76/4c/aa25851149f3f6d9785f6c869387ad82b3fd37582fa8147ac6
+Successfully built wrapt
+Installing collected packages: wrapt, typing-extensions, typed-ast, six, numpy, MarkupSafe, lazy-object-proxy, Werkzeug, toml, scipy, pytz, python-dateutil, mccabe, Jinja2, itsdangerous, isort, Click, astroid, scikit-learn, pylint, pandas, Flask
+Successfully installed Click-7.0 Flask-1.0.2 Jinja2-2.10.3 MarkupSafe-1.1.1 Werkzeug-0.16.0 astroid-2.6.2 isort-5.9.1 itsdangerous-1.1.0 lazy-object-proxy-1.6.0 mccabe-0.6.1 numpy-1.17.2 pandas-0.24.2 pylint-2.9.3 python-dateutil-2.8.0 pytz-2019.3 scikit-learn-0.20.3 scipy-1.3.1 six-1.12.0 toml-0.10.2 typed-ast-1.4.3 typing-extensions-3.10.0.0 wrapt-1.12.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+Removing intermediate container cf6b7a4fdeb2
+ ---> 0a6130447186
+Step 5/6 : EXPOSE 80
+ ---> Running in efc7333d8326
+Removing intermediate container efc7333d8326
+ ---> 394cc2acbb0b
+Step 6/6 : CMD ["python", "app.py"]
+ ---> Running in 895f6fb2b4f5
+Removing intermediate container 895f6fb2b4f5
+ ---> 0cd98260d93a
+Successfully built 0cd98260d93a
+Successfully tagged project4:1.1
+REPOSITORY   TAG             IMAGE ID       CREATED                  SIZE
+project4     1.1             0cd98260d93a   Less than a second ago   1.19GB
+python       3.7.3-stretch   34a518642c76   2 years ago              929MB
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 138-153-336
+[2021-07-07 00:00:25,951] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-07-07 00:00:25,972] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-07-07 00:00:25,984] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-07-07 00:00:25,988] INFO in app: prediction: [20.35373177134412]
+172.17.0.1 - - [07/Jul/2021 00:00:25] "POST /predict HTTP/1.1" 200 -
+
