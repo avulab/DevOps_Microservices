@@ -12,8 +12,8 @@ jobs:
     working_directory: ~/DevOps_Microservices/project-ml-microservice-kubernetes
 
     steps:
-      - checkout
-          path: ~/DevOps_Microservices/project-ml-microservice-kubernetes
+      - checkout:
+          path: ~/DevOps_Microservices
       # Download and cache dependencies
       - restore_cache:
           keys:
