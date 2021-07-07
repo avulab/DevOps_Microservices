@@ -16,4 +16,4 @@ docker tag project4:1.1 $dockerpath
 
 # Step 3:
 # Push image to a docker repository
-docker push bavula/project4:1.1
+docker push $dockerpath

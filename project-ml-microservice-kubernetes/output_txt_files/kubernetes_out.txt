@@ -1,1 +1,73 @@
-<paste log output from Kubernetes-mediated prediction, here>
+ -- Terminal 1 ----------
+❯ ./run_kubernetes.sh
+pod/project4 created
+NAME       READY   STATUS              RESTARTS   AGE
+project4   0/1     ContainerCreating   0          0s
+error: unable to forward port because pod is not running. Current status=Pending
+
+DevOps_Microservices/project-ml-microservice-kubernetes on  master [!?] via 🐍 v2.7.12 
+❯ kubectl get pods
+NAME       READY   STATUS              RESTARTS   AGE
+project4   0/1     ContainerCreating   0          43s
+
+DevOps_Microservices/project-ml-microservice-kubernetes on  master [!?] via 🐍 v2.7.12 
+❯ kubectl get pods
+NAME       READY   STATUS    RESTARTS   AGE
+project4   1/1     Running   0          6m5s
+
+DevOps_Microservices/project-ml-microservice-kubernetes on  master [!?] via 🐍 v2.7.12 
+❯ kubectl logs -f project4
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 129-516-115
+^C
+
+DevOps_Microservices/project-ml-microservice-kubernetes on  master [!?] via 🐍 v2.7.12 took 41s 
+❯ ./run_kubernetes.sh
+Error from server (AlreadyExists): pods "project4" already exists
+NAME       READY   STATUS    RESTARTS   AGE
+project4   1/1     Running   0          7m34s
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
+
+---- Terminal 2 -------------
+❯ ./make_prediction.sh
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+
+DevOps_Microservices/project-ml-microservice-kubernetes on  master [!?] via 🐍 v3.5.2 (.devops) 
+❯ kubectl logs project4
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 129-516-115
+[2021-07-07 13:17:00,069] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2021-07-07 13:17:00,096] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-07-07 13:17:00,118] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2021-07-07 13:17:00,124] INFO in app: prediction: [20.35373177134412]
+127.0.0.1 - - [07/Jul/2021 13:17:00] "POST /predict HTTP/1.1" 200 -
+
+DevOps_Microservices/project-ml-microservice-kubernetes on  master [!?] via 🐍 v3.5.2 (.devops) 
+❯ 
+
